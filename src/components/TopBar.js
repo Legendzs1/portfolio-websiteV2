@@ -1,11 +1,12 @@
 import React from "react";
+import logo from "./logo0.png";
 
 const TopBar =({ styles }) => {
   const topBarStyle = {
     position: "fixed",
     top: 0,
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     width: "100%",
     height: styles.topBarHeights,
@@ -18,9 +19,7 @@ const TopBar =({ styles }) => {
 
   return (
     <div style={topBarStyle}>
-      <span>{`😺️`}</span>
-      App
-      <span>{`⚙️`}</span>
+      <img src={logo} alt="THLB" />
     </div>
   );
 };

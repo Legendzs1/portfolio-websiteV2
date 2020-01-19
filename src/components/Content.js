@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import styled from 'styled-components';
+import './card.css';
 
 const Content =({ props, styles }) => {
 
@@ -9,6 +10,12 @@ const Content =({ props, styles }) => {
     paddingRight: 20,
     paddingBottom: styles.showSidebar ? 20 : styles.footerMenuHeight + 20,
     paddingLeft: styles.showSidebar ? styles.sidebarWidth + 20 : 20
+  };
+  const cardsStyle = {
+      display: "flex",
+      justifyContent: "space-between",
+      flexWrap: "wrap",
+
   };
 
   const cards = [
@@ -34,17 +41,21 @@ const Content =({ props, styles }) => {
     }
   ];
 
+
   return (
-    <div style={contentStyle}>
-    cards.map((card, i) => {
+    <div style={contentStyle} className={"centered"}>
+      <section className={"cards"} style={cardsStyle}>
+    {cards.map((card, i) => {
       return(
         <Card
+          className={"card"}
           title={card.title}
           tech={card.tech}
           link={card.link}
         />
       );
-    });
+    })}
+      </section>
     </div>
   );
 };

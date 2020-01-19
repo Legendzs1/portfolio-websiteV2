@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import ReactDOM from 'react-dom';
-
+import './card.css';
 
 
 
@@ -13,20 +13,21 @@ const Card = (props, styles) => {
     height: '25%',
     boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2)`,
     padding: '10px',
-    margin: '10px',
+    margin: '1rem .25em',
     textAlign: 'center',
+    flex: "1 0 calc(49% - 1em)", // controls the size of the box
+
   }
 
   const Button = styled.a`
     text-decoration: none;
     color: black;
     cursor: pointer;
-
     outline: 0;
     font-weight: 300;
     :hover {
       opacity: 0.8;
-    }
+    };
   `
 
   const Title = styled.h2`
@@ -37,12 +38,8 @@ const Card = (props, styles) => {
     color: black;
     font-weight: 300;
   `
-  const SingleCard = {
-
-  }
-
   return (
-    <div style={styles, cardStyles}>
+    <div style={styles, cardStyles} >
       <Title>{props.title}</Title>
       <Description>{props.tech}</Description>
       <Button

@@ -19,6 +19,7 @@ class App extends Component {
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
+    document.title="THLB Personal Website";
   }
 
   componentWillUnmount() {
@@ -41,10 +42,12 @@ class App extends Component {
       black: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
       topBarHeight: 40,
       footerMenuHeight: 50,
-      showFooterMenuText: windowWidth > 500,
+      showFooterMenuText: windowWidth > 100,
       showSidebar: windowWidth > 768,
       sidebarCollapsed,
-      sidebarWidth: sidebarCollapsed ? 50 : 150
+      sidebarWidth: sidebarCollapsed ? 50 : 150,
+      
+
     };
 
     const menuItems = [
