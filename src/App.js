@@ -3,7 +3,6 @@ import TopBar from "./components/TopBar";
 import FooterMenu from "./components/FooterMenu";
 import Content from "./components/Content";
 import Sidebar from "./components/Sidebar";
-import Card from "./components/Card";
 
 
 class App extends Component {
@@ -35,7 +34,7 @@ class App extends Component {
   render() {
     const { windowWidth } = this.state;
 
-    const sidebarCollapsed = windowWidth < 1100;
+    const sidebarCollapsed = windowWidth < 1100; // Controls when the sidebar collapses
 
     const styles = {
       white: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -43,10 +42,10 @@ class App extends Component {
       topBarHeight: 40,
       footerMenuHeight: 50,
       showFooterMenuText: windowWidth > 100,
-      showSidebar: windowWidth > 768,
+      showSidebar: windowWidth > 768, // controls when sidebar shows up
       sidebarCollapsed,
       sidebarWidth: sidebarCollapsed ? 50 : 150,
-      
+
 
     };
 
@@ -56,11 +55,6 @@ class App extends Component {
       {text: "Skills"},
       {text: "Contact Me"}
     ];
-
-    if(styles.showSidebar) {
-    // menuItems.push({text: "Profile" });
-      //menuItems.push({text: "Settings" });
-    }
 
     return (
       <div
@@ -75,7 +69,7 @@ class App extends Component {
         ) : (
           <TopBar styles={styles} />
         )}
-        <Content styles={styles} />
+        <Content styles={styles} windowWidth={windowWidth}/>
 
         {!styles.showSidebar && (
           <FooterMenu menuItems={menuItems} styles={styles} />

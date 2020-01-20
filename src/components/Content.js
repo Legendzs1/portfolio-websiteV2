@@ -1,9 +1,11 @@
 import React from "react";
 import Card from "./Card";
 import styled from 'styled-components';
-import './card.css';
+import AboutMe from "./AboutMe";
+import ContactMe from "./ContactMe";
 
-const Content =({ props, styles }) => {
+
+const Content =({ props, styles, windowWidth }) => {
 
   const contentStyle = {
     paddingTop: styles.showSidebar ? 20 : styles.topbarHeight + 20,
@@ -41,13 +43,24 @@ const Content =({ props, styles }) => {
     }
   ];
 
+  const viewPort = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100vh",
+  }
+
 
   return (
     <div style={contentStyle} className={"centered"}>
       <section className={"cards"} style={cardsStyle}>
+      <AboutMe />
     {cards.map((card, i) => {
       return(
         <Card
+          windowWidth={windowWidth}
           className={"card"}
           title={card.title}
           tech={card.tech}
@@ -56,6 +69,7 @@ const Content =({ props, styles }) => {
       );
     })}
       </section>
+      <ContactMe />
     </div>
   );
 };

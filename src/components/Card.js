@@ -1,11 +1,10 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import ReactDOM from 'react-dom';
-import './card.css';
 
 
 
-const Card = (props, styles) => {
+const Card = (props, styles, windowWidth) => {
 
   const cardStyles = {
     backgroundColor:'#fff',
@@ -13,11 +12,17 @@ const Card = (props, styles) => {
     height: '25%',
     boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2)`,
     padding: '10px',
-    margin: '1rem .25em',
+    margin: '10px',
     textAlign: 'center',
-    flex: "1 0 calc(49% - 1em)", // controls the size of the box
-
+    flex: "calc(50% -  1em)"
   }
+
+const mediaQuery = {
+  desktop: 1200,
+  tablet: 768,
+  phone: 576,
+};
+
 
   const Button = styled.a`
     text-decoration: none;
@@ -38,8 +43,11 @@ const Card = (props, styles) => {
     color: black;
     font-weight: 300;
   `
+
+//TODO now that windowWidth is passed through check to see if that value actually works
+
   return (
-    <div style={styles, cardStyles} >
+    <div style={styles, cardStyles}>
       <Title>{props.title}</Title>
       <Description>{props.tech}</Description>
       <Button

@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./logo0.png";
 
 const Sidebar = ({menuItems, styles}) => {
   const sidebarStyle = {
@@ -6,7 +7,8 @@ const Sidebar = ({menuItems, styles}) => {
     width: styles.sidebarWidth,
     position:"fixed",
     backgroundColor:"#333",
-    paddingTop: 40
+    paddingTop: 40,
+
   };
 
   const menuItemStyle = {
@@ -14,12 +16,13 @@ const Sidebar = ({menuItems, styles}) => {
     justifyContent: styles.sidebarCollapsed ? "center" : "flex-start",
     alignItems: "center",
     padding: `4px ${styles.sidebarCollapsed ? 0 : 10}px`,
-    color: styles.white(0.9)
+    color: styles.white(0.9),
+    marginLeft: "23px"
   };
 
   const iconStyle = {
     fontSize: 26,
-    marginRight: styles.sidebarCollapsed ? 0 : 10
+    marginRight: styles.sidebarCollapsed ? 10 : 20
   };
 
   const logoStyle = {
@@ -27,15 +30,16 @@ const Sidebar = ({menuItems, styles}) => {
     color: styles.white(),
     fontSize: 34,
     marginBottom: 60,
-    fontWeight: "bold"
+    fontWeight: "bold",
+
   };
 
   return (
     <div style={sidebarStyle}>
-      <div style={logoStyle}>{styles.sidebarCollapsed ? "A" : "App"}</div>
+      <div style={logoStyle}>{styles.sidebarCollapsed ? <img src={logo} /> : "THLB"}</div>
       {menuItems.map((item, i) => (
         <div key={i} style={menuItemStyle}>
-          <span style={iconStyle}>{item.icon}</span>
+          {!styles.sidebarCollapsed || <span style={iconStyle}>{item.text.charAt(0)}</span>}
           {!styles.sidebarCollapsed && item.text}
         </div>
       ))}
